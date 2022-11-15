@@ -1,20 +1,28 @@
 body{
   background-color: black;
+  color: white;
 }
 
 .flex-container {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: left;
   width: 100%;
 }
 
 .flex-item {
-  margin-left: 10px;
+  margin-left: 0px;
   flex-grow: 1;
 }
 
 .flex-item:first-child {
-  margin-left: 0;
+  margin-left: 10px;
+}
+
+
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
