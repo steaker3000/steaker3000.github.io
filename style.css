@@ -1,13 +1,18 @@
+body{
+  background-color: black;
+}
+
 .flex-container {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: left;
   width: 100%;
 }
 
 .flex-item {
-  margin-left: 50px;
+  margin-left: 10px;
+  flex-grow: 1;
 }
 
 .flex-item:first-child {
