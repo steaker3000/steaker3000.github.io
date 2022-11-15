@@ -1,0 +1,15 @@
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.flex-item {
+  margin-left: 50px;
+}
+
+.flex-item:first-child {
+  margin-left: 0;
+}
