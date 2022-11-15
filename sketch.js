@@ -1,12 +1,12 @@
 // create three divs, pass in each one a pointer and attach them to a different .flex-item element
+let sizeX = window.innerWidth;
+let sizeY = window.innerHeight;
 
 // p5 sketch 1
 const sketch1 = function(p) {
-  var sketchWidth;
-  var sketchHeight;
   p.setup = function() {
-    sketchWidth = document.getElementById("p5-1").offsetWidth;
-    sketchHeight = document.getElementById("p5-1").offsetHeight;
+    sketchWidth = sizeX*0.3;
+    sketchHeight = sizeY*0.9;
     p.createCanvas(sketchWidth, sketchHeight);
     //p.createCanvas(100, 100);
     p.background(100);
@@ -18,11 +18,9 @@ window.document.getElementById('p5-1').appendChild(node1);
 
 // p5 sketch 2
 const sketch2 = function(p){
-  var sketchWidth;
-  var sketchHeight;
   p.setup = function() {
-    sketchWidth = document.getElementById("p5-2").offsetWidth;
-    sketchHeight = document.getElementById("p5-2").offsetHeight;
+    sketchWidth = sizeX*0.3;
+    sketchHeight = sizeY*0.9;
     p.createCanvas(sketchWidth, sketchHeight);
     //p.createCanvas(100, 100);
     p.background(100);
@@ -36,11 +34,9 @@ window.document.getElementById('p5-2').appendChild(node2);
 
 // p5 sketch 3
 const sketch3 = function(p) {
-  var sketchWidth;
-  var sketchHeight;
   p.setup = function() {
-    sketchWidth = document.getElementById("p5-3").offsetWidth;
-    sketchHeight = document.getElementById("p5-3").offsetHeight;
+    sketchWidth = sizeX*0.3;
+    sketchHeight = sizeY*0.9;
     p.createCanvas(sketchWidth, sketchHeight);
     //p.createCanvas(100, 100);
     p.background(100);
