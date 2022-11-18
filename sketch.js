@@ -1,3 +1,10 @@
+window.addEventListener("scroll", (event) => {
+    var a = window.scrollTop;
+    var b = window.scrollHeight - window.clientHeight;
+    let scroll = a / b;
+    console.log(scroll)
+});
+
 // create three divs, pass in each one a pointer and attach them to a different .flex-item element
 let sizeX = window.innerWidth;
 let sizeY = window.innerHeight;
@@ -11,22 +18,51 @@ const sketch1 = function(p) {
     //p.createCanvas(100, 100);
     p.background(100);
   }
+  p.draw = function()
+  {
+    p.textSize(32);
+    p.text('word', 10, 30);
+    p.fill(0, 102, 153);
+    p.text('word', 10, 60);
+    p.fill(0, 102, 153, 51);
+    p.text('word', 10, 90);
+  };
+
 };
 const node1 = document.createElement('div');
 new p5(sketch1, node1);
 window.document.getElementById('p5-1').appendChild(node1);
 
 // p5 sketch 2
-const sketch2 = function(p){
-  p.setup = function() {
+const sketch2 = function(p)
+{
+  p.preload
+  {
+    p.img = p.loadImage('assets/UV.png');
+    p.skateboard = p.loadModel('assets/skateboard.obj', true);
+  }
+  p.setup = function()
+  {
+
     sketchWidth = sizeX*0.3;
     sketchHeight = sizeY*0.9;
-    p.createCanvas(sketchWidth, sketchHeight);
-    //p.createCanvas(100, 100);
+    p.createCanvas(sketchWidth, sketchHeight, p.WEBGL);
+    p.angleMode(p.DEGREES);
     p.background(100);
   }
-  p.draw = function() {
+  p.draw = function()
+  {
+    p.rotateX(70);
+    p.scale(2); // Scaled to make model fit into canvas
+    p.rotateZ(( p.mouseX + p.windowWidth / 2 ) / 50);
+    //normalMaterial(); // For effect
+    //specularMaterial(0);
+    //p.textureMode(p.IMAGE);
+    //p.textureWrap(p.REPEAT);
+    p.texture(p.img);
+    p.model(p.skateboard);
   };
+
 };
 const node2 = document.createElement('div');
 new p5(sketch2, node2);

@@ -12,10 +12,17 @@ h1{
 
 .flex-container {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: left;
   width: 100%;
+}
+
+.vertical{
+  flex-direction: column;
+}
+
+.horizontal{
+  flex-direction: row;
 }
 
 .flex-item {
