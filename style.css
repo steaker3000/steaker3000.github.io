@@ -8,6 +8,7 @@ body{
 }
 h1{
   min-height: 100vh;
+  vertical-align: center;
 }
 
 .flex-container {

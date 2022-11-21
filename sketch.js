@@ -5,27 +5,34 @@ window.addEventListener("scroll", (event) => {
     console.log(scroll)
 });
 
+const siteNumber = 5;
+
+
 // create three divs, pass in each one a pointer and attach them to a different .flex-item element
 let sizeX = window.innerWidth;
 let sizeY = window.innerHeight;
 
 // p5 sketch 1
 const sketch1 = function(p) {
+
+  p.preload = function (){
+
+  }
   p.setup = function() {
     sketchWidth = sizeX*0.3;
     sketchHeight = sizeY*0.9;
     p.createCanvas(sketchWidth, sketchHeight);
     //p.createCanvas(100, 100);
-    p.background(100);
+    p.background(0);
   }
   p.draw = function()
   {
-    p.textSize(32);
-    p.text('word', 10, 30);
+    p.textSize(50);
+    p.text('menu 1', 10, 30);
     p.fill(0, 102, 153);
-    p.text('word', 10, 60);
+    p.text('menu 2', 10, 60);
     p.fill(0, 102, 153, 51);
-    p.text('word', 10, 90);
+    p.text('menu 3', 10, 90);
   };
 
 };
@@ -44,16 +51,16 @@ const sketch2 = function(p)
   p.setup = function()
   {
 
-    sketchWidth = sizeX*0.3;
-    sketchHeight = sizeY*0.9;
+    sketchWidth = sizeX*0.7;
+    sketchHeight = sizeY*0.45;
     p.createCanvas(sketchWidth, sketchHeight, p.WEBGL);
     p.angleMode(p.DEGREES);
-    p.background(100);
+    p.background(0);
   }
   p.draw = function()
   {
     p.rotateX(70);
-    p.scale(2); // Scaled to make model fit into canvas
+    p.scale(4); // Scaled to make model fit into canvas
     p.rotateZ(( p.mouseX + p.windowWidth / 2 ) / 50);
     //normalMaterial(); // For effect
     //specularMaterial(0);
@@ -71,12 +78,18 @@ window.document.getElementById('p5-2').appendChild(node2);
 // p5 sketch 3
 const sketch3 = function(p) {
   p.setup = function() {
-    sketchWidth = sizeX*0.3;
-    sketchHeight = sizeY*0.9;
+    sketchWidth = sizeX*0.7;
+    sketchHeight = sizeY*0.45;
     p.createCanvas(sketchWidth, sketchHeight);
     //p.createCanvas(100, 100);
     p.background(100);
   }
+  p.draw = function()
+  {
+    p.textSize(50);
+    p.textWrap(p.WORD);
+    p.text('menu 1 ist nur ein platzhalter im moment.,,,,,,,', 10, 10, 500, 100);
+  };
 };
 const node3 = document.createElement('div');
 new p5(sketch3, node3);
