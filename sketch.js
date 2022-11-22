@@ -1,4 +1,8 @@
-var state =0;
+var state = 0;
+var oldState = 0;
+const siteNumber = 5;
+
+
 
 window.addEventListener("scroll", (event) => {
   var h = document.documentElement,
@@ -9,7 +13,7 @@ window.addEventListener("scroll", (event) => {
   var percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
     //console.log(percent)
 
-    const siteNumber = 5;
+
     state = ((percent -25)/75 * siteNumber);
     if (state <= 0) state =0;
     state = Math.round(state);
@@ -23,6 +27,12 @@ window.addEventListener("scroll", (event) => {
 let sizeX = window.innerWidth;
 let sizeY = window.innerHeight;
 
+//Store position of skateboard
+var rotationPositive = [true, true, true];
+var positionOld = [0 , 0 , 0];
+var positionStates = [[0,0,0] , [100,100,0] , [200,200,0] , [0,50,100] , [100,50,100] , [0,0,0] , [0,0,0] , [0,0,0]];
+const turningSpeed= 1;
+
 // p5 sketch 1
 const sketch1 = function(p) {
 
@@ -31,12 +41,12 @@ const sketch1 = function(p) {
     p.menuText = p.loadStrings("assets/menu.txt");
   }
   p.setup = function() {
-    sketchWidth = sizeX*0.3;
+    sketchWidth = sizeX*0.25;
     sketchHeight = sizeY;
     p.createCanvas(sketchWidth, sketchHeight);
     //p.createCanvas(100, 100);
     //p.noCanvas();
-    p.background(0);
+    p.background(255);
   }
   p.draw = function()
   {
@@ -76,19 +86,83 @@ const sketch2 = function(p)
   }
   p.setup = function()
   {
-    sketchWidth = sizeX*0.7;
-    sketchHeight = sizeY*0.45;
+    sketchWidth = sizeX*0.75;
+    sketchHeight = sizeY*0.5;
     p.createCanvas(sketchWidth, sketchHeight, p.WEBGL);
     p.angleMode(p.DEGREES);
     p.background(100);
+
   }
   p.draw = function()
   {
     p.clear();
     p.background(0);
-    p.rotateX(70);
+    //p.ambientLight(0);
+
+    if (state == 0)
+    {
+      positionOld[0] += turningSpeed;
+      //console.log(positionOld[0]);
+      if( positionOld[0] >= 360)
+      {
+        positionOld[0] = 0;
+      }
+    }
+
+    if (state != oldState)
+    {
+      for (let i = 0; i < 3; i++)
+      {
+        let difference = positionStates[state][i] - positionOld[i];
+        if (difference > 0)
+        {
+          if (Math.abs(difference) > 180){
+            rotationPositive[i] = false;
+          }
+          else{
+            rotationPositive[i] = true;
+          }
+        }
+        else{
+          if (Math.abs(difference) < 180){
+            rotationPositive[i] = true;
+          }
+          else{
+            rotationPositive[i] = false;
+          }
+        }
+
+      }
+      oldState = state;
+    }
+    for (let i = 0; i < 3; i++)
+    {
+      //console.log("STATE " + state + " INDEX " + i + " POS " + positionOld[i] + " NEWPOS" + positionStates[state][i]);
+      if (positionStates[state][i] == positionOld[i])
+      {
+        if( i == 0) p.rotateX(positionOld[i]);
+        else if( i == 1) p.rotateY(positionOld[i]);
+        else if( i == 2) p.rotateZ(positionOld[i]);
+      }
+      else if (rotationPositive[i] == true || state ==0)
+          {
+            if( i == 0) p.rotateX(positionOld[i]+=turningSpeed);
+            else if( i == 1) p.rotateY(positionOld[i]+=turningSpeed);
+            else if( i == 2) p.rotateZ(positionOld[i]+=turningSpeed);
+          }
+      else
+          {
+            if( i == 0) p.rotateX(positionOld[i]-=turningSpeed);
+            else if( i == 1) p.rotateY(positionOld[i]-=turningSpeed);
+            else if( i == 2) p.rotateZ(positionOld[i]-=turningSpeed);
+          }
+      if ( positionOld[i] >= 360) positionOld[i] = 0;
+      if ( positionOld[i] <= -1) positionOld[i] = 359;
+
+    }
+
     p.scale(2); // Scaled to make model fit into canvas
-    p.rotateZ(( p.mouseX + p.windowWidth / 2 ) / 50);
+    //p.rotateZ(( p.mouseX + p.windowWidth / 2 ) / 50);
     //normalMaterial(); // For effect
     //specularMaterial(0);
     //p.textureMode(p.IMAGE);
@@ -96,6 +170,7 @@ const sketch2 = function(p)
     p.texture(p.img);
     p.model(p.skateboard);
     p.debugMode(p.GRID);
+
   };
 
 };
@@ -108,6 +183,7 @@ const sketch3 = function(p) {
   p.preload = function()
   {
     p.testText = p.loadStrings("assets/1.txt");
+    p.image = p.loadImage("assets/1.jpg");
   }
   p.setup = function() {
     sketchWidth = sizeX*0.7;
@@ -116,7 +192,11 @@ const sketch3 = function(p) {
     //p.createDiv(sketchWidth, sketchHeight);
     //p.createCanvas(100, 100);
     p.background(100);
-    p.createDiv(p.join(p.testText, "<br>"));
+    let img = p.createImg("assets/1.jpg",'the p5 magenta asterisk');
+    img.addClass('image');
+    let div = p.createDiv(p.join(p.testText, "<br>"));
+    div.addClass('p5jsClass');
+
   }
   p.draw = function()
   {
