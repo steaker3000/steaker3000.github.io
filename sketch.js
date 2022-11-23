@@ -44,14 +44,11 @@ const sketch1 = function(p) {
     sketchWidth = sizeX*0.25;
     sketchHeight = sizeY;
     p.createCanvas(sketchWidth, sketchHeight);
-    //p.createCanvas(100, 100);
-    //p.noCanvas();
-    p.background(255);
   }
   p.draw = function()
   {
     p.clear();
-    p.background(0);
+    p.background(128);
     p.textSize(50);
     //p.text('menu 1', 10, 30);
     p.fill(255);
@@ -87,16 +84,14 @@ const sketch2 = function(p)
   p.setup = function()
   {
     sketchWidth = sizeX*0.75;
-    sketchHeight = sizeY*0.5;
+    sketchHeight = sizeY*0.6;
     p.createCanvas(sketchWidth, sketchHeight, p.WEBGL);
     p.angleMode(p.DEGREES);
-    p.background(100);
-
   }
   p.draw = function()
   {
-    p.clear();
-    p.background(0);
+    //p.clear();
+    p.background(128);
     //p.ambientLight(0);
 
     if (state == 0)
@@ -191,7 +186,7 @@ const sketch3 = function(p) {
     p.noCanvas();
     //p.createDiv(sketchWidth, sketchHeight);
     //p.createCanvas(100, 100);
-    p.background(100);
+    p.background(128);
     let img = p.createImg("assets/1.jpg",'the p5 magenta asterisk');
     img.addClass('image');
     let div = p.createDiv(p.join(p.testText, "<br>"));

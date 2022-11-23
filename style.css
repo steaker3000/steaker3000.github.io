@@ -26,6 +26,8 @@ div.textbox{
 .flex-container {
   display: flex;
   width: 100%;
+  margin-left: 0px;
+  margin-top: 0px;
 }
 
 .vertical{
@@ -41,7 +43,7 @@ div.textbox{
 .flex-item {
   margin-left: 0px;
   margin-top: 0px;
-  flex-grow: 1;
+  flex-grow: 0;
 }
 
 .flex-item:first-child {
@@ -64,7 +66,7 @@ div.sticky {
 div.p5jsClass{
   margin: 1vh;
   color: white;
-  background-color: black;
+  background-color: grey;
   font-size: 3vh;
   text-align: left;
   top: 0px;
@@ -72,10 +74,9 @@ div.p5jsClass{
 }
 
 .image{
-  margin: 2vh;
+  padding-right: 2vw;
   height: auto;
   max-width: 30vw;
   float: right;
   text-align: right;
-  vertical-align: sub;
 }
