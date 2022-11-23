@@ -30,7 +30,7 @@ let sizeY = window.innerHeight;
 //Store position of skateboard
 var rotationPositive = [true, true, true];
 var positionOld = [0 , 0 , 0];
-var positionStates = [[0,0,0] , [100,100,0] , [200,200,0] , [0,50,100] , [100,50,100] , [0,0,0] , [0,0,0] , [0,0,0]];
+var positionStates = [[0,0,0] , [0,0,0] , [90,340,0] , [180,0,0] , [100,50,100] , [0,0,0] , [0,0,0] , [0,0,0]];
 const turningSpeed= 1;
 
 // p5 sketch 1
@@ -84,7 +84,7 @@ const sketch2 = function(p)
   p.setup = function()
   {
     sketchWidth = sizeX*0.75;
-    sketchHeight = sizeY*0.6;
+    sketchHeight = sizeY*0.5;
     p.createCanvas(sketchWidth, sketchHeight, p.WEBGL);
     p.angleMode(p.DEGREES);
   }
@@ -156,7 +156,7 @@ const sketch2 = function(p)
 
     }
 
-    p.scale(2); // Scaled to make model fit into canvas
+    p.scale(3); // Scaled to make model fit into canvas
     //p.rotateZ(( p.mouseX + p.windowWidth / 2 ) / 50);
     //normalMaterial(); // For effect
     //specularMaterial(0);
