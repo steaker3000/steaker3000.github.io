@@ -1,4 +1,6 @@
-board
+skateboard
+kickflip
 mall grab
+skaters
 wheels
-drawing
+
