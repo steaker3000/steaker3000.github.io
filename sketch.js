@@ -28,7 +28,7 @@ let sizeY = window.innerHeight;
 //Store position of skateboard
 var rotationPositive = [true, true, true];
 var positionOld = [0 , 0 , 0];
-var positionStates = [[0,0,0] , [0,0,0] , [90,340,0] , [180,0,0] , [100,50,100] , [0,0,0] , [0,0,0] , [0,0,0]];
+var positionStates = [[0,0,0] , [100,50,100] , [90,340,0] , [180,0,0]  , [90,0,0] , [0,0,0] , [0,0,0]];
 const turningSpeed= 1;
 
 // p5 sketch 1
