@@ -1,4 +1,4 @@
-const siteNumber = 5;
+const siteNumber = 4;
 
 if (typeof oldState == 'undefined') {
     oldState = 0;
@@ -227,7 +227,7 @@ const sketch3 = function(p) {
         document.getElementById('illustration').src = "assets/5.jpg";
       }
     }
-    //console.log('state changed');
+    console.log(state);
     oldState = state;
 
   };

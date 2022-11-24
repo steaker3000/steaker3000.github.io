@@ -75,8 +75,8 @@ div.p5jsClass{
 
 .image{
   padding-right: 2vw;
-  height: auto;
-  max-width: 30vw;
+  width: auto;
+  max-height: 40vh;
   float: right;
   text-align: right;
 }
